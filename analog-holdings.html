@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>analog holdings · Acquiring & Operating Exceptional Businesses · Carolinas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --marine:       #1D3D52;
+    --marine-deep:  #152C3C;
+    --marine-mid:   #2B5068;
+    --sand:         #B89A6A;
+    --sand-light:   #D4B98A;
+    --parchment:    #EDE8DC;
+    --cream:        #F5F1E8;
+    --ink:          #1A1714;
+    --ink-mid:      #3D3830;
+    --ink-faint:    #7A7268;
+    --warm-white:   #FDFAF6;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3.5rem; height: 72px;
+    background: rgba(237,232,220,0.97); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(184,154,106,0.18);
+    transition: all 0.3s;
+  }
+  .nav-logo { display: flex; align-items: baseline; gap: 0; text-decoration: none; line-height: 1; }
+  .logo-analog { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 1.25rem; color: var(--marine); letter-spacing: -0.01em; }
+  .logo-holdings { font-family: 'Jost', sans-serif; font-weight: 200; font-size: 1.25rem; color: var(--sand); letter-spacing: -0.01em; margin-left: 0.4rem; }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-faint); transition: color 0.2s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--sand); transition: width 0.25s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { padding: 0.4rem 1.2rem !important; border: 1px solid var(--marine) !important; color: var(--marine) !important; }
+  .nav-cta:hover { background: var(--marine) !important; color: var(--cream) !important; }
+  .nav-cta::after { display: none !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 1px; background: var(--ink); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    background: var(--marine);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Topographic strata lines */
+  .topo-bg {
+    position: absolute; inset: 0; overflow: hidden;
+    opacity: 0.07;
+  }
+  .topo-bg svg { position: absolute; width: 110%; height: 110%; top: -5%; left: -5%; }
+
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.03;
+  }
+
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1280px; margin: 0 auto;
+    padding: 10rem 4rem 6rem 6rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center; width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.58rem; font-weight: 200; letter-spacing: 0.42em;
+    text-transform: uppercase; color: var(--sand);
+    margin-bottom: 3rem;
+    display: flex; align-items: center; gap: 1.25rem;
+    opacity: 0.8;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 2.5rem; height: 1px; background: var(--sand); opacity: 0.6; }
+
+  .hero-wordmark {
+    margin-bottom: 2.5rem;
+    line-height: 1;
+  }
+  .hw-analog { font-family: 'Jost', sans-serif; font-weight: 400; font-size: clamp(3.5rem, 6vw, 6rem); color: var(--parchment); letter-spacing: -0.02em; display: block; }
+  .hw-holdings { font-family: 'Jost', sans-serif; font-weight: 200; font-size: clamp(3.5rem, 6vw, 6rem); color: var(--sand); letter-spacing: -0.02em; display: block; margin-top: -0.1em; }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    font-weight: 300; font-style: italic;
+    color: rgba(237,232,220,0.7);
+    line-height: 1.6; margin-bottom: 3.5rem;
+    max-width: 460px;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-parchment { display: inline-block; padding: 0.85rem 2.25rem; background: var(--parchment); color: var(--marine-deep); text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; transition: all 0.2s; }
+  .btn-parchment:hover { background: var(--cream); transform: translateY(-1px); }
+  .btn-outline { display: inline-block; padding: 0.85rem 2.25rem; border: 1px solid rgba(237,232,220,0.25); color: rgba(237,232,220,0.75); text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.64rem; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--parchment); color: var(--parchment); }
+
+  /* Right side — criteria cards */
+  .hero-right { display: flex; flex-direction: column; gap: 1px; }
+  .criteria-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,154,106,0.1);
+    padding: 1.75rem 2rem;
+    display: flex; align-items: flex-start; gap: 1.25rem;
+    transition: background 0.2s;
+  }
+  .criteria-card:hover { background: rgba(255,255,255,0.07); }
+  .cc-icon {
+    width: 32px; height: 32px; flex-shrink: 0;
+    border: 1px solid rgba(184,154,106,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cc-icon svg { width: 14px; height: 14px; stroke: var(--sand-light); fill: none; stroke-width: 1.5; }
+  .cc-label { font-size: 0.56rem; font-weight: 200; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sand); margin-bottom: 0.3rem; opacity: 0.8; }
+  .cc-value { font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--parchment); }
+
+  /* ── SECTION BASE ── */
+  section { position: relative; }
+  .section-inner { max-width: 1280px; margin: 0 auto; padding: 7rem 4rem; }
+  .section-tag { font-size: 0.56rem; font-weight: 200; letter-spacing: 0.38em; text-transform: uppercase; color: var(--sand); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.25rem; }
+  .section-tag::before { content: ''; width: 2rem; height: 1px; background: var(--sand); }
+  .section-tag.dark { color: var(--sand); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--ink); }
+  .section-title.light { color: var(--parchment); }
+  .sand-rule { width: 3rem; height: 1px; background: var(--sand-light); margin: 2rem 0; opacity: 0.6; }
+
+  /* ── ABOUT / THESIS ── */
+  #about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; margin-top: 4.5rem; }
+  .about-body { font-size: 0.97rem; font-weight: 300; line-height: 1.92; color: var(--ink-faint); }
+  .about-body p + p { margin-top: 1.3rem; }
+  .about-body strong { color: var(--ink-mid); font-weight: 400; }
+
+  .cg-sig {
+    margin-top: 3rem;
+    padding: 2rem 2.25rem;
+    border-left: 1px solid var(--sand-light);
+    background: rgba(184,154,106,0.04);
+  }
+  .cg-sig-text { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; font-style: italic; color: var(--marine); line-height: 1.65; }
+  .cg-sig-attr { font-size: 0.56rem; font-weight: 200; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.75rem; }
+
+  .criteria-grid { display: flex; flex-direction: column; gap: 0; }
+  .criterion { padding: 1.75rem 0; border-top: 1px solid rgba(184,154,106,0.15); display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: start; }
+  .criterion:last-child { border-bottom: 1px solid rgba(184,154,106,0.15); }
+  .cr-num { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--sand); padding-top: 2px; }
+  .cr-title { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.35rem; }
+  .cr-body { font-size: 0.85rem; font-weight: 300; line-height: 1.75; color: var(--ink-faint); }
+
+  /* ── TEAM ── */
+  #team { background: var(--marine); }
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 4rem; background: rgba(184,154,106,0.06); }
+  .team-card {
+    background: var(--marine); padding: 3.5rem 3rem;
+    transition: background 0.25s; position: relative; overflow: hidden;
+  }
+  .team-card:hover { background: var(--marine-mid); }
+  .team-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--sand), transparent); transform: scaleX(0); transition: transform 0.4s; }
+  .team-card:hover::before { transform: scaleX(1); }
+  .ti-box { width: 52px; height: 52px; border: 1px solid rgba(184,154,106,0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
+  .ti-box span { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; color: var(--sand-light); }
+  .t-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--parchment); margin-bottom: 0.3rem; }
+  .t-role { font-size: 0.58rem; font-weight: 200; letter-spacing: 0.28em; text-transform: uppercase; color: var(--sand); margin-bottom: 1.5rem; opacity: 0.85; }
+  .t-bio { font-size: 0.87rem; font-weight: 300; line-height: 1.82; color: rgba(237,232,220,0.55); margin-bottom: 1.75rem; }
+  .t-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .ttag { font-size: 0.54rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand-light); border: 1px solid rgba(184,154,106,0.2); padding: 0.2rem 0.55rem; }
+
+  /* ── SERVICES / APPROACH ── */
+  #services { background: var(--parchment); }
+  .approach-intro { max-width: 600px; margin-bottom: 5rem; }
+  .approach-intro p { font-size: 0.97rem; font-weight: 300; line-height: 1.92; color: var(--ink-faint); margin-top: 1.5rem; }
+
+  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .ap-card {
+    background: var(--cream); padding: 3rem 2.5rem;
+    position: relative; overflow: hidden; transition: background 0.2s;
+  }
+  .ap-card:hover { background: var(--warm-white); }
+  .ap-card::after { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: var(--sand); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s; }
+  .ap-card:hover::after { transform: scaleY(1); }
+  .ap-num { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: rgba(184,154,106,0.1); line-height: 1; position: absolute; top: 1.25rem; right: 1.5rem; }
+  .ap-phase { font-size: 0.54rem; font-weight: 200; letter-spacing: 0.32em; text-transform: uppercase; color: var(--sand); margin-bottom: 0.75rem; }
+  .ap-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--marine); margin-bottom: 1rem; line-height: 1.2; }
+  .ap-body { font-size: 0.87rem; font-weight: 300; line-height: 1.82; color: var(--ink-faint); margin-bottom: 1.75rem; }
+  .ap-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .ap-list li { font-size: 0.8rem; font-weight: 300; color: var(--ink-faint); padding-left: 1.2rem; position: relative; }
+  .ap-list li::before { content: '·'; position: absolute; left: 0.3rem; color: var(--sand); font-size: 1rem; line-height: 1.2; }
+
+  .flywheel-band {
+    margin-top: 5rem;
+    background: var(--marine-deep);
+    padding: 4rem;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: center;
+  }
+  .fb-left {}
+  .fb-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--parchment); line-height: 1.2; margin-bottom: 0.5rem; }
+  .fb-sub { font-size: 0.58rem; font-weight: 200; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sand); opacity: 0.75; }
+  .flywheel-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .fw-step { padding: 0 2rem; position: relative; }
+  .fw-step + .fw-step::before { content: '→'; position: absolute; left: -0.25rem; top: 1.4rem; color: var(--sand); opacity: 0.4; font-size: 0.9rem; }
+  .fw-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: var(--sand); line-height: 1; margin-bottom: 0.5rem; opacity: 0.6; }
+  .fw-title { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--parchment); margin-bottom: 0.5rem; }
+  .fw-body { font-size: 0.8rem; font-weight: 300; line-height: 1.7; color: rgba(237,232,220,0.5); }
+
+  /* ── PORTFOLIO / TARGETS ── */
+  #portfolio { background: var(--ink); }
+  .targets-intro { max-width: 580px; margin-bottom: 4.5rem; }
+  .targets-intro p { font-size: 0.97rem; font-weight: 300; line-height: 1.9; color: rgba(237,232,220,0.5); margin-top: 1.5rem; }
+  .targets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(184,154,106,0.06); }
+  .target-card {
+    background: var(--ink); padding: 2.5rem 2.25rem;
+    transition: background 0.2s; position: relative; overflow: hidden;
+  }
+  .target-card:hover { background: #241c18; }
+  .target-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--sand); transform: scaleX(0); transition: transform 0.35s; }
+  .target-card:hover::before { transform: scaleX(1); }
+  .tgt-sector { font-size: 0.54rem; font-weight: 200; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sand); margin-bottom: 0.75rem; opacity: 0.8; }
+  .tgt-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--parchment); margin-bottom: 0.25rem; }
+  .tgt-range { font-size: 0.75rem; font-weight: 300; color: rgba(237,232,220,0.4); margin-bottom: 1.25rem; }
+  .tgt-body { font-size: 0.83rem; font-weight: 300; line-height: 1.78; color: rgba(237,232,220,0.45); margin-bottom: 1.25rem; }
+  .tgt-tag { display: inline-block; font-size: 0.52rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.2rem 0.6rem; border: 1px solid rgba(184,154,106,0.2); color: var(--sand-light); }
+
+  .acquisition-cta {
+    margin-top: 3rem; padding: 3rem;
+    border: 1px solid rgba(184,154,106,0.12);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .acta-left {}
+  .acta-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--parchment); margin-bottom: 0.5rem; }
+  .acta-body { font-size: 0.87rem; font-weight: 300; line-height: 1.75; color: rgba(237,232,220,0.45); max-width: 500px; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; margin-top: 4.5rem; align-items: start; }
+  .contact-left p { font-size: 0.97rem; font-weight: 300; line-height: 1.9; color: var(--ink-faint); margin-top: 1.5rem; margin-bottom: 3rem; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+  .ci { display: flex; flex-direction: column; gap: 0.2rem; }
+  .ci-label { font-size: 0.54rem; font-weight: 200; letter-spacing: 0.32em; text-transform: uppercase; color: var(--sand); }
+  .ci-value { font-size: 0.97rem; font-weight: 300; color: var(--ink); text-decoration: none; transition: color 0.2s; }
+  .ci-value:hover { color: var(--marine); }
+  .contact-creds { margin-top: 2.5rem; padding: 1.75rem; border: 1px solid rgba(184,154,106,0.18); }
+  .cc-title { font-size: 0.54rem; font-weight: 200; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1rem; }
+  .cc-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .cc-tag { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--marine); border: 1px solid rgba(29,61,82,0.2); padding: 0.3rem 0.8rem; }
+  .contact-thesis { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; font-style: italic; color: var(--ink-faint); margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(184,154,106,0.15); line-height: 1.75; }
+
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.54rem; font-weight: 200; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); }
+  .form-group input, .form-group textarea, .form-group select { background: var(--parchment); border: 1px solid rgba(184,154,106,0.2); color: var(--ink); padding: 0.9rem 1.1rem; font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 300; outline: none; transition: border-color 0.2s; width: 100%; -webkit-appearance: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--sand); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(122,114,104,0.4); }
+  .form-group select option { background: var(--parchment); color: var(--ink); }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .form-submit { margin-top: 0.5rem; padding: 1rem 2rem; background: var(--marine); color: var(--parchment); border: none; font-family: 'Jost', sans-serif; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; width: 100%; }
+  .form-submit:hover { background: var(--marine-deep); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); border-top: 1px solid rgba(184,154,106,0.08); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-left { display: flex; align-items: baseline; gap: 1.5rem; }
+  .footer-logo-analog { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 0.95rem; color: rgba(237,232,220,0.5); }
+  .footer-logo-holdings { font-family: 'Jost', sans-serif; font-weight: 200; font-size: 0.95rem; color: var(--sand); opacity: 0.5; }
+  .footer-copy { font-size: 0.64rem; font-weight: 300; color: rgba(237,232,220,0.25); letter-spacing: 0.06em; }
+  .footer-right { font-size: 0.56rem; font-weight: 200; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,220,0.2); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(26px); transition: opacity 0.75s ease, transform 0.75s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 1024px) {
+    .flywheel-band { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 960px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 9rem 2rem 4rem; }
+    .hero-right { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .team-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .targets-grid { grid-template-columns: 1fr 1fr; }
+    .section-inner { padding: 5rem 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .flywheel-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .fw-step + .fw-step::before { display: none; }
+    .acquisition-cta { flex-direction: column; }
+    footer { flex-direction: column; align-items: flex-start; padding: 2rem; }
+    .fb-left { margin-bottom: 0; }
+  }
+  @media (max-width: 600px) {
+    .targets-grid { grid-template-columns: 1fr; }
+    .hw-analog, .hw-holdings { font-size: 3rem; }
+    .flywheel-band { padding: 2.5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <span class="logo-analog">analog</span>
+    <span class="logo-holdings">holdings</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Thesis</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#services">Approach</a></li>
+    <li><a href="#portfolio">Targets</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <!-- Topographic strata -->
+  <div class="topo-bg">
+    <svg viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-100,400 C100,350 200,420 400,380 C600,340 700,410 900,370 C1100,330 1200,400 1400,360" stroke="#B89A6A" stroke-width="1" fill="none"/>
+      <path d="M-100,430 C150,380 250,450 450,410 C650,370 750,440 950,400 C1150,360 1250,430 1450,390" stroke="#B89A6A" stroke-width="1" fill="none"/>
+      <path d="M-100,460 C120,400 220,480 420,440 C620,400 720,460 920,430 C1120,390 1220,460 1420,420" stroke="#B89A6A" stroke-width="1" fill="none"/>
+      <path d="M-100,490 C130,430 230,510 430,465 C630,420 730,490 930,455 C1130,420 1230,490 1430,450" stroke="#B89A6A" stroke-width="1" fill="none"/>
+      <path d="M-100,520 C160,460 260,540 460,495 C660,450 760,520 960,485 C1160,450 1260,520 1460,480" stroke="#B89A6A" stroke-width="1" fill="none"/>
+      <path d="M-100,350 C80,290 180,370 380,330 C580,290 680,360 880,320 C1080,280 1180,350 1380,310" stroke="#B89A6A" stroke-width="0.7" fill="none"/>
+      <path d="M-100,300 C90,240 190,320 390,280 C590,240 690,310 890,270 C1090,230 1190,300 1390,260" stroke="#B89A6A" stroke-width="0.5" fill="none"/>
+      <path d="M-100,560 C170,500 270,580 470,535 C670,490 770,560 970,525 C1170,490 1270,560 1470,520" stroke="#B89A6A" stroke-width="0.7" fill="none"/>
+      <path d="M-100,590 C140,530 240,610 440,565 C640,520 740,590 940,555 C1140,520 1240,590 1440,550" stroke="#B89A6A" stroke-width="0.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Carolinas & Southeast · Est. 2025</div>
+      <div class="hero-wordmark">
+        <span class="hw-analog">analog</span>
+        <span class="hw-holdings">holdings</span>
+      </div>
+      <p class="hero-headline">Acquiring & operating exceptional businesses in the Carolinas and Southeast.</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn-parchment">Our Thesis</a>
+        <a href="#contact" class="btn-outline">Start a Conversation</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="criteria-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div><div class="cc-label">Target Revenue</div><div class="cc-value">$1M – $10M Annual Revenue</div></div>
+      </div>
+      <div class="criteria-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="cc-label">Business Profile</div><div class="cc-value">Owner-Operated · Profitable · Established</div></div>
+      </div>
+      <div class="criteria-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="cc-label">Geography</div><div class="cc-value">Carolinas & Southeast</div></div>
+      </div>
+      <div class="criteria-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div><div class="cc-label">Seller Profile</div><div class="cc-value">Transition-Ready Owner · Clear Exit</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / THESIS -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">Investment Thesis</div>
+    <h2 class="section-title">Acquiring businesses<br>built to last.</h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-body fade-up">
+          <p>Analog Holdings acquires and operates lower-middle-market businesses across the Carolinas and Southeast. We target companies with <strong>$1M–$10M in annual revenue</strong> — owner-operated, profitable, and positioned for long-term value creation.</p>
+          <p>Our approach is long-term and relationship-driven. We buy businesses to steward them, not to flip them. We offer sellers a clear exit, a fair price, and the confidence that their <strong>employees, customers, and communities</strong> are in good hands.</p>
+          <p>The name reflects the thesis: in a world defined by digital noise, there is enduring value in the tangible — businesses with real customers, real cash flows, and real roots in the communities they serve. <strong>Analog is the advantage.</strong></p>
+        </div>
+        <div class="cg-sig fade-up stagger-2">
+          <div class="cg-sig-text">"We seek profitable, owner-operated companies in the Carolinas and Southeast. We buy businesses to steward them — not to flip them."</div>
+          <div class="cg-sig-attr">Camron Gilstrap · Principal · Analog Holdings</div>
+        </div>
+      </div>
+      <div>
+        <div class="criteria-grid">
+          <div class="criterion fade-up stagger-1">
+            <div class="cr-num">01</div>
+            <div>
+              <div class="cr-title">Revenue Range</div>
+              <div class="cr-body">$1M–$10M in annual revenue. Companies below this threshold lack the operational foundation for institutional stewardship; above it, competition increases and multiples compress value creation.</div>
+            </div>
+          </div>
+          <div class="criterion fade-up stagger-2">
+            <div class="cr-num">02</div>
+            <div>
+              <div class="cr-title">Profitability</div>
+              <div class="cr-body">Profitable at acquisition. We are not a turnaround firm. We acquire businesses with demonstrated cash flow and a track record of serving customers well.</div>
+            </div>
+          </div>
+          <div class="criterion fade-up stagger-3">
+            <div class="cr-num">03</div>
+            <div>
+              <div class="cr-title">Owner-Operated</div>
+              <div class="cr-body">Founder or family-owned businesses approaching a natural transition point — retirement, succession gap, or desire to see the business in capable hands.</div>
+            </div>
+          </div>
+          <div class="criterion fade-up stagger-4">
+            <div class="cr-num">04</div>
+            <div>
+              <div class="cr-title">Geography</div>
+              <div class="cr-body">Carolinas and Southeast. We invest in markets we know deeply — Greenville-Spartanburg, Charlotte, Raleigh, and the secondary cities and towns where these businesses are the backbone of the local economy.</div>
+            </div>
+          </div>
+          <div class="criterion fade-up stagger-5">
+            <div class="cr-num">05</div>
+            <div>
+              <div class="cr-title">Business Quality</div>
+              <div class="cr-body">Durable competitive position, recurring customer relationships, and a business model that doesn't depend entirely on the founder's relationships to function.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-inner">
+    <div class="section-tag dark">The Team</div>
+    <h2 class="section-title light">The principals.</h2>
+    <div class="sand-rule"></div>
+    <div class="team-grid">
+      <div class="team-card fade-up stagger-1">
+        <div class="ti-box"><span>CG</span></div>
+        <div class="t-name">Camron Gilstrap</div>
+        <div class="t-role">Principal · Greenville, SC</div>
+        <p class="t-bio">Principal of Analog Holdings and managing partner across four integrated business entities in the Carolinas. Camron brings operator-first perspective to every acquisition — direct GC licensure, real estate broker credentials, and hands-on experience managing complex projects and capital structures across the Southeast.</p>
+        <div class="t-tags">
+          <span class="ttag">Operator</span>
+          <span class="ttag">GC · NC · SC · VA</span>
+          <span class="ttag">RE Broker · SC · NC</span>
+          <span class="ttag">Greenville, SC</span>
+        </div>
+      </div>
+      <div class="team-card fade-up stagger-2">
+        <div class="ti-box"><span>EG</span></div>
+        <div class="t-name">Elsie Gilstrap</div>
+        <div class="t-role">Partner · Real Estate & Acquisitions</div>
+        <p class="t-bio">Partner and licensed real estate broker in South Carolina and North Carolina. Elsie supports acquisition due diligence, property-related transactions, and the real estate components of Analog's investment thesis — particularly where commercial real estate intersects with operating business acquisitions.</p>
+        <div class="t-tags">
+          <span class="ttag">RE Broker · SC · NC</span>
+          <span class="ttag">Acquisitions</span>
+          <span class="ttag">Due Diligence</span>
+        </div>
+      </div>
+      <div class="team-card fade-up stagger-3">
+        <div class="ti-box"><span>AH</span></div>
+        <div class="t-name">Advisory Network</div>
+        <div class="t-role">Carolinas & Southeast</div>
+        <p class="t-bio">Analog Holdings operates with a curated network of legal, accounting, banking, and operational advisors across the Carolinas. Our relationships span the deal cycle — from initial business valuation through close and post-acquisition integration. Every referral in the Analog network comes with a transaction track record.</p>
+        <div class="t-tags">
+          <span class="ttag">Legal</span>
+          <span class="ttag">Accounting</span>
+          <span class="ttag">Banking</span>
+          <span class="ttag">Operations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-title">Our approach.</h2>
+    <div class="approach-intro">
+      <p class="fade-up">Analog Holdings approaches every acquisition with the same discipline: rigorous diligence, honest valuation, and a long-term commitment to the business, its people, and its community. We do not pursue volume — we pursue quality.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="ap-card fade-up stagger-1">
+        <div class="ap-num">I</div>
+        <div class="ap-phase">Phase 01</div>
+        <div class="ap-title">Sourcing & Relationship</div>
+        <p class="ap-body">We source acquisitions through direct outreach, referral networks, and proprietary market mapping across the Carolinas and Southeast. Most of our best conversations start years before a transaction.</p>
+        <ul class="ap-list">
+          <li>Proprietary outreach to owner-operators</li>
+          <li>Referral network — attorneys, CPAs, bankers</li>
+          <li>Direct industry and market mapping</li>
+          <li>No-pressure, relationship-first approach</li>
+        </ul>
+      </div>
+      <div class="ap-card fade-up stagger-2">
+        <div class="ap-num">II</div>
+        <div class="ap-phase">Phase 02</div>
+        <div class="ap-title">Diligence & Valuation</div>
+        <p class="ap-body">We conduct thorough, respectful due diligence — financial, operational, and cultural. We value businesses honestly and structure deals that are fair to sellers and sustainable for the business long-term.</p>
+        <ul class="ap-list">
+          <li>Financial statement normalization</li>
+          <li>Operational assessment and site visits</li>
+          <li>Customer and employee interviews</li>
+          <li>Honest, third-party-validated valuation</li>
+        </ul>
+      </div>
+      <div class="ap-card fade-up stagger-3">
+        <div class="ap-num">III</div>
+        <div class="ap-phase">Phase 03</div>
+        <div class="ap-title">Acquisition & Transition</div>
+        <p class="ap-body">We structure clean transactions with clear terms and thoughtful transition planning. Sellers deserve certainty — we provide it with well-documented deals, appropriate transition support, and commitment to the existing team.</p>
+        <ul class="ap-list">
+          <li>Clean deal structure — asset or equity</li>
+          <li>Seller financing consideration</li>
+          <li>Transition support and knowledge transfer</li>
+          <li>Employee retention commitment</li>
+        </ul>
+      </div>
+      <div class="ap-card fade-up stagger-1">
+        <div class="ap-num">IV</div>
+        <div class="ap-phase">Phase 04</div>
+        <div class="ap-title">Operations & Growth</div>
+        <p class="ap-body">Post-acquisition, we operate with a light hand and a long view. We invest in systems, people, and processes — not financial engineering. Growth comes from running the business better, not from leverage.</p>
+        <ul class="ap-list">
+          <li>Operational systems and process improvement</li>
+          <li>Team development and leadership building</li>
+          <li>Strategic growth planning</li>
+          <li>Long-term hold orientation</li>
+        </ul>
+      </div>
+      <div class="ap-card fade-up stagger-2">
+        <div class="ap-num">V</div>
+        <div class="ap-phase">Phase 05</div>
+        <div class="ap-title">Capital & Financing</div>
+        <p class="ap-body">We structure acquisitions with a combination of equity, seller financing, and senior debt appropriate to the business. Our capital markets relationships — built through Sabal Partners — provide access to flexible acquisition financing across the Southeast.</p>
+        <ul class="ap-list">
+          <li>SBA and conventional acquisition financing</li>
+          <li>Seller note structuring</li>
+          <li>Equity co-investment for larger transactions</li>
+          <li>Relationship banking in Carolinas markets</li>
+        </ul>
+      </div>
+      <div class="ap-card fade-up stagger-3">
+        <div class="ap-num">VI</div>
+        <div class="ap-phase">Phase 06</div>
+        <div class="ap-title">Community Stewardship</div>
+        <p class="ap-body">We believe businesses are community institutions. We take seriously our obligation to the employees, customers, and towns that make these companies what they are. Stewardship is not a marketing position — it is our operating standard.</p>
+        <ul class="ap-list">
+          <li>Employee retention and advancement</li>
+          <li>Local vendor and supplier relationships</li>
+          <li>Community presence and engagement</li>
+          <li>Long-term, patient capital commitment</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Flywheel -->
+    <div class="flywheel-band fade-up">
+      <div class="fb-left">
+        <div class="fb-title">The Analog<br>Flywheel</div>
+        <div class="fb-sub">Integrated Platform · Carolinas</div>
+      </div>
+      <div class="flywheel-steps">
+        <div class="fw-step">
+          <div class="fw-num">01</div>
+          <div class="fw-title">Development</div>
+          <div class="fw-body">Adaptive Properties identifies and develops historic mill assets across the Carolinas — creating the wealth corridors where businesses thrive.</div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-num">02</div>
+          <div class="fw-title">Real Estate</div>
+          <div class="fw-body">BGP Construction and Sabal Partners build and transact commercial property in those corridors — generating relationships and market intelligence.</div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-num">03</div>
+          <div class="fw-title">Business Acquisition</div>
+          <div class="fw-body">Analog Holdings acquires operating businesses in those same markets — completing the flywheel from development to long-term business ownership.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET SECTORS -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-tag dark">Target Sectors</div>
+    <h2 class="section-title light">What we buy.</h2>
+    <div class="targets-intro">
+      <p class="fade-up">Analog Holdings is sector-agnostic within certain parameters: we look for businesses with durable demand, defensible customer relationships, and operations that don't require heroic management to sustain. The following represent current areas of focus.</p>
+    </div>
+    <div class="targets-grid">
+      <div class="target-card fade-up stagger-1">
+        <div class="tgt-sector">Services · B2B</div>
+        <div class="tgt-name">Business Services</div>
+        <div class="tgt-range">$1M–$10M Revenue · Carolinas</div>
+        <p class="tgt-body">Professional services, facility services, logistics, and specialty contractors with recurring client relationships and a strong local reputation.</p>
+        <span class="tgt-tag">Priority Sector</span>
+      </div>
+      <div class="target-card fade-up stagger-2">
+        <div class="tgt-sector">Trades · Specialty Contractor</div>
+        <div class="tgt-name">Skilled Trades</div>
+        <div class="tgt-range">$1M–$8M Revenue · Southeast</div>
+        <p class="tgt-body">Electrical, HVAC, plumbing, and specialty construction contractors with established crews, recurring commercial accounts, and predictable demand drivers.</p>
+        <span class="tgt-tag">Active Search</span>
+      </div>
+      <div class="target-card fade-up stagger-3">
+        <div class="tgt-sector">Distribution · Light Manufacturing</div>
+        <div class="tgt-name">Distribution & Manufacturing</div>
+        <div class="tgt-range">$2M–$10M Revenue · Southeast</div>
+        <p class="tgt-body">Light manufacturing, value-add distribution, and specialty fabrication businesses with defensible niche positions and established customer relationships.</p>
+        <span class="tgt-tag">Active Search</span>
+      </div>
+      <div class="target-card fade-up stagger-1">
+        <div class="tgt-sector">Healthcare · Wellness</div>
+        <div class="tgt-name">Healthcare Services</div>
+        <div class="tgt-range">$1M–$6M Revenue · Carolinas</div>
+        <p class="tgt-body">Outpatient healthcare, dental, veterinary, and wellness services with established patient bases, real estate optionality, and durable community demand.</p>
+        <span class="tgt-tag">Opportunistic</span>
+      </div>
+      <div class="target-card fade-up stagger-2">
+        <div class="tgt-sector">Consumer · Retail</div>
+        <div class="tgt-name">Consumer & Retail</div>
+        <div class="tgt-range">$1M–$5M Revenue · Carolinas</div>
+        <p class="tgt-body">Specialty retail, food service concepts, and consumer brands with strong local loyalty, proven unit economics, and a defensible community position.</p>
+        <span class="tgt-tag">Selective</span>
+      </div>
+      <div class="target-card fade-up stagger-3">
+        <div class="tgt-sector">Technology · Software</div>
+        <div class="tgt-name">Niche Technology</div>
+        <div class="tgt-range">$500K–$5M ARR · Remote-Capable</div>
+        <p class="tgt-body">Vertical SaaS, niche software, or technology-enabled services businesses with recurring revenue, high retention, and an owner ready to transition to the next chapter.</p>
+        <span class="tgt-tag">Opportunistic</span>
+      </div>
+    </div>
+    <div class="acquisition-cta fade-up">
+      <div class="acta-left">
+        <div class="acta-title">Thinking about selling your business?</div>
+        <p class="acta-body">We move quickly, operate with discretion, and offer honest valuations. If you're an owner considering a transition in the next one to five years, we'd welcome a confidential conversation — no obligation, no pressure.</p>
+      </div>
+      <a href="#contact" class="btn-parchment" style="white-space:nowrap;">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Let's talk.</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="fade-up">Whether you're a business owner exploring a sale, an advisor with a client in transition, or an investor interested in co-investment — we want to hear from you. Every conversation at Analog Holdings begins and ends with discretion.</p>
+        <div class="contact-details fade-up stagger-1">
+          <div class="ci"><div class="ci-label">Email</div><a href="mailto:camron@analog.holdings" class="ci-value">camron@analog.holdings</a></div>
+          <div class="ci"><div class="ci-label">Phone</div><a href="tel:8643605424" class="ci-value">(864) 360-5424</a></div>
+          <div class="ci"><div class="ci-label">Location</div><span class="ci-value">Greenville, SC · Carolinas & Southeast</span></div>
+          <div class="ci"><div class="ci-label">Website</div><a href="https://analog.holdings" class="ci-value">analog.holdings</a></div>
+        </div>
+        <div class="contact-creds fade-up stagger-2">
+          <div class="cc-title">Principal Credentials</div>
+          <div class="cc-tags">
+            <span class="cc-tag">Operator</span>
+            <span class="cc-tag">GC · NC · SC · VA</span>
+            <span class="cc-tag">RE Broker · SC · NC</span>
+            <span class="cc-tag">Analog Holdings LLC</span>
+          </div>
+        </div>
+        <div class="contact-thesis fade-up stagger-3">"We buy good businesses from good people, and we take a long-term view on everything we own."</div>
+      </div>
+      <div class="fade-up stagger-2">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group"><label>Full Name</label><input type="text" placeholder="John Smith" required></div>
+            <div class="form-group"><label>Company / Business</label><input type="text" placeholder="Smith Industrial Services"></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@company.com" required></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(555) 000-0000"></div>
+          <div class="form-group">
+            <label>Inquiry Type</label>
+            <select>
+              <option value="">Select inquiry type…</option>
+              <option>Business Owner — Exploring a Sale</option>
+              <option>Advisor / Business Broker Referral</option>
+              <option>Co-Investment Inquiry</option>
+              <option>Acquisition Financing</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Tell Us About Your Business</label><textarea placeholder="Business type, approximate revenue range, location, and what's prompting your consideration of a sale or transition…" required></textarea></div>
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div>
+      <span class="footer-logo-analog">analog</span>
+      <span class="footer-logo-holdings"> holdings</span>
+    </div>
+    <span class="footer-copy">© 2025 Analog Holdings LLC · All rights reserved · Greenville, SC</span>
+  </div>
+  <div class="footer-right">Acquiring & Operating · Carolinas & Southeast · analog.holdings</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  let open = false;
+  function toggleMenu() {
+    open = !open;
+    const links = document.querySelector('.nav-links');
+    links.style.cssText = open
+      ? `display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(237,232,220,0.98);padding:2rem;gap:1.5rem;border-bottom:1px solid rgba(184,154,106,0.2);backdrop-filter:blur(16px);z-index:99;`
+      : 'display:none;';
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { open = false; document.querySelector('.nav-links').style.cssText = 'display:none;'; }));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.cssText = 'background:#2B5068;color:#EDE8DC;';
+    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.cssText = ''; e.target.reset(); }, 3500);
+  }
+
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--marine)' : '';
+    });
+  });
+</script>
+</body>
+</html>
